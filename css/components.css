@@ -1479,14 +1479,20 @@ a.card:hover::after {
 }
 
 
-/* === SECTORS GRID === */
+/* === SECTOR CARDS === */
 .sectors {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  .sectors {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
   .sectors {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1495,72 +1501,72 @@ a.card:hover::after {
 .sector-card {
   position: relative;
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;
+  min-height: 280px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  background:
-    radial-gradient(circle at top right, rgba(214, 107, 30, 0.1), transparent 30%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 247, 248, 0.94) 100%);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl) var(--space-lg);
-  text-align: left;
   text-decoration: none;
-  color: var(--color-text);
-  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
-  box-shadow: var(--shadow-sm);
+  color: #fff;
+  background: var(--bg-image) center/cover no-repeat;
 }
 
-.sector-card:hover {
-  border-color: var(--color-primary);
-  box-shadow: 0 22px 46px rgba(20, 35, 49, 0.14);
-  transform: translateY(-6px);
-  color: var(--color-text);
+.sector-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(18, 31, 43, 0.92) 0%,
+    rgba(18, 31, 43, 0.5) 50%,
+    rgba(18, 31, 43, 0.3) 100%
+  );
+  transition: background var(--transition-base);
 }
 
-.sector-card__icon {
-  width: 54px;
-  height: 54px;
-  margin-bottom: var(--space-md);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-lg);
-  background: rgba(34, 56, 76, 0.08);
-  color: var(--color-primary);
-  font-size: var(--font-size-sm);
-  font-weight: var(--fw-bold);
-  letter-spacing: 0.08em;
+.sector-card:hover .sector-card__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(18, 31, 43, 0.95) 0%,
+    rgba(18, 31, 43, 0.6) 50%,
+    rgba(18, 31, 43, 0.4) 100%
+  );
 }
 
-.sector-card h3 {
-  font-size: var(--font-size-base);
-  font-weight: var(--fw-semibold);
-  margin-bottom: var(--space-sm);
+.sector-card__content {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-xl);
+  width: 100%;
+}
+
+.sector-card__content h3 {
+  font-size: var(--font-size-xl);
+  color: #fff;
+  margin-bottom: var(--space-xs);
 }
 
 .sector-card__meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: var(--space-sm);
-  color: var(--color-accent);
+  display: inline-block;
   font-size: var(--font-size-xs);
   font-weight: var(--fw-semibold);
-  letter-spacing: 0.08em;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
 }
 
-.sector-card__meta::before {
-  content: '';
-  width: 22px;
-  height: 1px;
-  background: rgba(214, 107, 30, 0.42);
+.sector-card__content p {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height var(--transition-slow), opacity var(--transition-base);
 }
 
-.sector-card p {
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  line-height: 1.65;
+.sector-card:hover .sector-card__content p {
+  max-height: 100px;
+  opacity: 1;
 }
 
 
