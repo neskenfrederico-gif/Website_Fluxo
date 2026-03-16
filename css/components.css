@@ -1564,150 +1564,101 @@ a.card:hover::after {
 }
 
 
-/* === SPOTLIGHT (Case Study destaque) === */
-/* === CASES CAROUSEL === */
-.cases-carousel__track {
-  display: grid;
-}
-
-.case-card {
-  grid-area: 1 / 1;
+/* === CASE STUDY === */
+.case-study {
   display: grid;
   grid-template-columns: 1fr;
+  gap: var(--space-xl);
   align-items: center;
-  background:
-    radial-gradient(circle at top right, rgba(214, 107, 30, 0.08), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 247, 248, 0.94) 100%);
+  margin-bottom: var(--space-2xl);
+}
+
+@media (min-width: 768px) {
+  .case-study {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-2xl);
+  }
+
+  .case-study--reverse {
+    direction: rtl;
+  }
+
+  .case-study--reverse > * {
+    direction: ltr;
+  }
+}
+
+.case-study__image {
+  position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  border: 1px solid rgba(216, 225, 232, 0.9);
-  box-shadow: var(--shadow-md);
-  opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  pointer-events: none;
 }
 
-.case-card.active {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-@media (min-width: 768px) {
-  .case-card {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.case-card__image {
-  overflow: hidden;
-}
-
-.case-card__image img {
+.case-study__image img {
   width: 100%;
-  height: 220px;
+  aspect-ratio: 3/2;
   object-fit: cover;
+  transition: transform var(--transition-slow);
 }
 
-@media (min-width: 768px) {
-  .case-card__image img {
-    height: 100%;
-    max-height: 340px;
-  }
+.case-study:hover .case-study__image img {
+  transform: scale(1.04);
 }
 
-.case-card__content {
-  padding: var(--space-lg);
-}
-
-.case-card__sector {
-  display: inline-block;
-  padding: 4px 12px;
-  background: var(--color-accent-light);
-  color: var(--color-accent);
+.case-study__sector {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  padding: 6px 16px;
+  background: rgba(20, 35, 49, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fff;
   font-size: var(--font-size-xs);
   font-weight: var(--fw-semibold);
   border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.case-study__title {
+  font-size: var(--font-size-2xl);
   margin-bottom: var(--space-md);
+  color: var(--color-text);
 }
 
-.case-card__title {
-  font-size: var(--font-size-xl);
-  font-weight: var(--fw-bold);
-  margin-bottom: var(--space-xs);
-}
-
-.case-card__desc {
-  font-size: var(--font-size-sm);
+.case-study__desc {
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-md);
-  line-height: var(--lh-base);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
 }
 
-.case-card__stats {
+.case-study__pills {
   display: flex;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-md);
-}
-
-.case-card__stat-value {
-  display: block;
-  font-size: var(--font-size-xl);
-  font-weight: var(--fw-bold);
-  color: var(--color-accent);
-}
-
-.case-card__stat-label {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-}
-
-/* Carousel Navigation */
-.cases-carousel__nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-lg);
-  margin-top: var(--space-xl);
-}
-
-.cases-carousel__btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--color-border);
-  background: var(--color-surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  color: var(--color-text-secondary);
-}
-
-.cases-carousel__btn:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-.cases-carousel__dots {
-  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
 }
 
-.cases-carousel__dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: var(--color-border);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  padding: 0;
+.case-study__pills span {
+  padding: 6px 16px;
+  background: var(--color-primary-50);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--radius-full);
 }
 
-.cases-carousel__dot.active {
-  background: var(--color-accent);
-  transform: scale(1.3);
+.case-study__link {
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+  font-size: var(--font-size-base);
+  transition: gap var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-decoration: none;
+}
+
+.case-study__link:hover {
+  gap: var(--space-sm);
 }

@@ -196,15 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
     datasetKey: 'bg'
   });
 
-  setupSlider({
-    items: [...document.querySelectorAll('.case-card')],
-    indicators: [...document.querySelectorAll('.cases-carousel__dot')],
-    backgrounds: [],
-    previousButton: document.getElementById('cases-prev'),
-    nextButton: document.getElementById('cases-next'),
-    intervalMs: 6000,
-    datasetKey: 'case'
-  });
 
   document.querySelectorAll('.faq__item').forEach((item, index) => {
     const question = item.querySelector('.faq__question');
