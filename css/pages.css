@@ -533,7 +533,7 @@
 }
 
 .hub-section h2 {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-2xl);
   color: var(--color-text);
 }
 
@@ -627,7 +627,7 @@
 }
 
 .hub-feature h3 {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
   margin-bottom: var(--space-sm);
 }
 
@@ -689,7 +689,7 @@
 }
 
 .page-home .section {
-  padding: clamp(2.9rem, 5.5vw, 4.5rem) 0;
+  padding: var(--space-3xl) 0;
 }
 
 .page-home .section + .section {
@@ -828,7 +828,7 @@
 .impact {
   background: var(--gradient-dark);
   color: #fff;
-  padding: clamp(3.5rem, 7vw, 6rem) 0 !important;
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
   position: relative;
   overflow: hidden;
 }
@@ -1011,9 +1011,21 @@
 /* Hub services sidebar / related */
 .hub-related {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-lg);
   margin-top: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .hub-related {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hub-related {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 

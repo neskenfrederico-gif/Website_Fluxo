@@ -1393,7 +1393,7 @@ a.card:hover::after {
 .sectors {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-md);
+  gap: var(--space-lg);
 }
 
 @media (min-width: 640px) {
