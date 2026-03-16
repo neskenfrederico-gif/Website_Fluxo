@@ -219,7 +219,9 @@
   }
 
   .header__nav {
-    position: static;
+    position: relative;
+    right: auto;
+    top: auto;
     width: auto;
     min-width: max-content;
     height: auto;
@@ -230,7 +232,6 @@
     border-radius: var(--radius-full);
     backdrop-filter: blur(16px);
     overflow: visible;
-    position: relative;
     margin-left: auto;
     display: block !important;
   }
