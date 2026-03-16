@@ -187,12 +187,13 @@ document.addEventListener('DOMContentLoaded', () => {
     restartAutoplay();
   }
 
+  // Hero background slideshow (apenas imagens, sem texto)
   setupSlider({
-    items: [...document.querySelectorAll('.hero__slide')],
-    indicators: [...document.querySelectorAll('.hero__indicator')],
-    backgrounds: [...document.querySelectorAll('.hero__bg')],
+    items: [...document.querySelectorAll('.hero__bg')],
+    indicators: [],
+    backgrounds: [],
     intervalMs: 5000,
-    datasetKey: 'slide'
+    datasetKey: 'bg'
   });
 
   setupSlider({
