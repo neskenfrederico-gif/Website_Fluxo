@@ -36,9 +36,9 @@ Redirect 301 /fale-conosco /contato.html
 Redirect 301 /orcamento /contato.html
 Redirect 301 /portfolio /obras.html
 Redirect 301 /obras /obras.html
-Redirect 301 /projetos /obras.html
+RedirectMatch 301 ^/projetos$ /obras.html
 Redirect 301 /clientes /obras.html
-Redirect 301 /servicos /servicos.html
+RedirectMatch 301 ^/servicos$ /servicos.html
 
 # --- Ar-Condicionado Industrial ---
 Redirect 301 /ar-condicionado-industrial /servicos/ar-condicionado-industrial.html

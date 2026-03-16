@@ -391,7 +391,8 @@
 .hero__content {
   position: relative;
   z-index: 1;
-  padding: clamp(8rem, 14vw, 12rem) 0 clamp(4rem, 8vw, 6rem);
+  padding-top: clamp(8rem, 14vw, 12rem);
+  padding-bottom: clamp(4rem, 8vw, 6rem);
   color: #fff;
   max-width: 720px;
 }
@@ -1534,6 +1535,14 @@ a.card:hover::after {
   border-radius: var(--radius-full);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.case-study__content {
+  padding: var(--space-xl);
+  background: var(--color-surface);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .case-study__title {

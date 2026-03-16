@@ -8,7 +8,7 @@
   background:
     radial-gradient(circle at top right, rgba(214, 107, 30, 0.2), transparent 18%),
     var(--gradient-dark);
-  padding: var(--space-4xl) 0 var(--space-2xl);
+  padding: clamp(2rem, 5vw, 4rem) 0 var(--space-2xl);
   color: #fff;
   overflow: hidden;
 }
@@ -27,8 +27,8 @@
 
 .page-header h1 {
   color: #fff;
-  font-size: var(--font-size-4xl);
-  max-width: 12ch;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  text-wrap: balance;
 }
 
 .page-header .container {
@@ -921,17 +921,17 @@
 
 .impact__step-number {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(214, 107, 30, 0.2);
-  color: var(--color-accent);
-  font-size: var(--font-size-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: var(--font-size-base);
   font-weight: var(--fw-bold);
-  border: 1px solid rgba(214, 107, 30, 0.3);
+  line-height: 1;
 }
 
 .impact__step strong {
@@ -940,7 +940,7 @@
   margin-bottom: 2px;
 }
 
-.impact__step span {
+.impact__step > div span {
   display: block;
   font-size: var(--font-size-sm);
   color: rgba(255, 255, 255, 0.65);
@@ -981,7 +981,15 @@
   line-height: 1;
 }
 
-.impact__stat-suffix {
+.impact__stat-number[data-suffix]::after {
+  content: attr(data-suffix);
+  color: var(--color-accent);
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  margin-left: 2px;
+}
+
+.impact__stat-unit {
+  display: block;
   font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: var(--fw-bold);
   color: var(--color-accent);

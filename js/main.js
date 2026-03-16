@@ -350,18 +350,31 @@ document.addEventListener('DOMContentLoaded', () => {
       return num >= 1000 ? num.toLocaleString('pt-BR') : String(num);
     };
 
+    const roundToStep = (value, target) => {
+      if (target >= 10000) return Math.round(value / 1000) * 1000;
+      if (target >= 1000) return Math.round(value / 100) * 100;
+      return Math.round(value);
+    };
+
     const animateCounter = (element) => {
       const target = parseInt(element.dataset.count, 10);
       const duration = 2000;
+      let lastDisplayed = -1;
       const startTime = performance.now();
 
       const step = (currentTime) => {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(eased * target);
 
-        element.textContent = formatNumber(current);
+        const current = progress === 1
+          ? target
+          : roundToStep(eased * target, target);
+
+        if (current !== lastDisplayed) {
+          element.textContent = formatNumber(current);
+          lastDisplayed = current;
+        }
 
         if (progress < 1) {
           requestAnimationFrame(step);
@@ -371,11 +384,17 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(step);
     };
 
+    let counterTriggered = false;
     const counterObserver = new IntersectionObserver((entries, instance) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        animateCounter(entry.target);
-        instance.unobserve(entry.target);
+        if (!entry.isIntersecting || counterTriggered) return;
+        counterTriggered = true;
+        counters.forEach((counter, i) => {
+          setTimeout(() => {
+            animateCounter(counter);
+            instance.unobserve(counter);
+          }, i * 150);
+        });
       });
     }, { threshold: 0.3 });
 
