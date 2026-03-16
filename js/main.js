@@ -382,4 +382,25 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach((counter) => counterObserver.observe(counter));
   }
 
+  // Timeline scroll animation
+  const timelineItems = document.querySelectorAll('.timeline__item');
+
+  if ('IntersectionObserver' in window && timelineItems.length) {
+    const timelineObserver = new IntersectionObserver((entries, instance) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        instance.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -80px 0px'
+    });
+
+    timelineItems.forEach((item, index) => {
+      item.style.transitionDelay = `${index * 150}ms`;
+      timelineObserver.observe(item);
+    });
+  }
+
 });
