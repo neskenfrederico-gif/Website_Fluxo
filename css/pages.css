@@ -709,6 +709,17 @@
   color: #4d6072;
 }
 
+/* Home services grid override */
+.page-home .home-services__grid {
+  gap: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .page-home .home-services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (min-width: 1024px) {
   .page-home .header__inner {
     display: grid;
