@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "fluxo-site",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:/Users/neske/AppData/Roaming/npm/node_modules/serve/build/main.js", "-l", "3000", "-s", "."],
+      "port": 3000
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+# ============================================
+# FLUXO ENGENHARIA - .htaccess
+# Redirects 301, error page, compression
+# ============================================
+
+# --- Error Page ---
+ErrorDocument 404 /404.html
+
+# --- Force HTTPS ---
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# --- Force www ---
+RewriteCond %{HTTP_HOST} ^fluxo\.eng\.br$ [NC]
+RewriteRule ^(.*)$ https://www.fluxo.eng.br/$1 [L,R=301]
+
+# --- Remove trailing slash ---
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# ============================================
+# REDIRECT 301 - URLs antigas -> novas
+# ============================================
+
+# --- Home / Paginas principais ---
+Redirect 301 /home /
+Redirect 301 /index.php /
+Redirect 301 /default.asp /
+Redirect 301 /empresa /empresa.html
+Redirect 301 /a-empresa /empresa.html
+Redirect 301 /sobre /empresa.html
+Redirect 301 /quem-somos /empresa.html
+Redirect 301 /contato /contato.html
+Redirect 301 /fale-conosco /contato.html
+Redirect 301 /orcamento /contato.html
+Redirect 301 /portfolio /obras.html
+Redirect 301 /obras /obras.html
+Redirect 301 /projetos /obras.html
+Redirect 301 /clientes /obras.html
+Redirect 301 /servicos /servicos.html
+
+# --- Ar-Condicionado Industrial ---
+Redirect 301 /ar-condicionado-industrial /servicos/ar-condicionado-industrial.html
+Redirect 301 /ar-condicionado-industrial-anapolis /servicos/ar-condicionado-industrial.html
+Redirect 301 /ar-condicionado-industrial-goiania /servicos/ar-condicionado-industrial.html
+Redirect 301 /climatizacao-industrial /servicos/ar-condicionado-industrial.html
+Redirect 301 /climatizacao-industrial-goias /servicos/ar-condicionado-industrial.html
+Redirect 301 /sistema-vrf /servicos/ar-condicionado-industrial.html
+Redirect 301 /sistema-vrf-industrial /servicos/ar-condicionado-industrial.html
+Redirect 301 /sistema-vrv /servicos/ar-condicionado-industrial.html
+Redirect 301 /splitao-industrial /servicos/ar-condicionado-industrial.html
+Redirect 301 /split-industrial /servicos/ar-condicionado-industrial.html
+Redirect 301 /ar-condicionado-para-industria /servicos/ar-condicionado-industrial.html
+Redirect 301 /ar-condicionado-para-galpao /servicos/ar-condicionado-industrial.html
+Redirect 301 /ar-condicionado-para-fabrica /servicos/ar-condicionado-industrial.html
+Redirect 301 /projeto-de-ar-condicionado /servicos/ar-condicionado-industrial.html
+Redirect 301 /projeto-de-ar-condicionado-industrial /servicos/ar-condicionado-industrial.html
+Redirect 301 /instalacao-de-ar-condicionado-industrial /servicos/ar-condicionado-industrial.html
+Redirect 301 /fan-coil-industrial /servicos/ar-condicionado-industrial.html
+Redirect 301 /climatizacao-de-galpao /servicos/ar-condicionado-industrial.html
+Redirect 301 /climatizacao-de-fabrica /servicos/ar-condicionado-industrial.html
+
+# --- Salas Limpas ---
+Redirect 301 /salas-limpas /servicos/salas-limpas.html
+Redirect 301 /sala-limpa /servicos/salas-limpas.html
+Redirect 301 /salas-limpas-farmaceuticas /servicos/salas-limpas.html
+Redirect 301 /salas-limpas-anvisa /servicos/salas-limpas.html
+Redirect 301 /sala-limpa-farmaceutica /servicos/salas-limpas.html
+Redirect 301 /sala-limpa-grau-b /servicos/salas-limpas.html
+Redirect 301 /sala-limpa-grau-c /servicos/salas-limpas.html
+Redirect 301 /sala-limpa-grau-d /servicos/salas-limpas.html
+Redirect 301 /sala-limpa-iso-14644 /servicos/salas-limpas.html
+Redirect 301 /qualificacao-de-salas-limpas /servicos/salas-limpas.html
+Redirect 301 /projeto-de-sala-limpa /servicos/salas-limpas.html
+Redirect 301 /construcao-de-sala-limpa /servicos/salas-limpas.html
+Redirect 301 /clean-room /servicos/salas-limpas.html
+Redirect 301 /area-limpa /servicos/salas-limpas.html
+Redirect 301 /filtro-hepa /servicos/salas-limpas.html
+Redirect 301 /fluxo-laminar /servicos/salas-limpas.html
+
+# --- Controle de Temperatura e Umidade ---
+Redirect 301 /controle-de-temperatura /servicos/controle-temperatura.html
+Redirect 301 /controle-de-temperatura-e-umidade /servicos/controle-temperatura.html
+Redirect 301 /controle-de-umidade /servicos/controle-temperatura.html
+Redirect 301 /controle-temperatura-industrial /servicos/controle-temperatura.html
+Redirect 301 /controle-de-temperatura-farmaceutica /servicos/controle-temperatura.html
+Redirect 301 /ibutg /servicos/controle-temperatura.html
+Redirect 301 /monitoramento-ibutg /servicos/controle-temperatura.html
+Redirect 301 /conforto-termico /servicos/controle-temperatura.html
+Redirect 301 /conforto-termico-industrial /servicos/controle-temperatura.html
+Redirect 301 /psicrometria /servicos/controle-temperatura.html
+Redirect 301 /desumidificacao /servicos/controle-temperatura.html
+Redirect 301 /desumidificacao-industrial /servicos/controle-temperatura.html
+Redirect 301 /umidificacao /servicos/controle-temperatura.html
+Redirect 301 /controle-ambiental /servicos/controle-temperatura.html
+Redirect 301 /climatizacao-farmaceutica /servicos/controle-temperatura.html
+Redirect 301 /rdc-430 /servicos/controle-temperatura.html
+Redirect 301 /temperatura-e-umidade /servicos/controle-temperatura.html
+
+# --- Automacao HVAC ---
+Redirect 301 /automacao-hvac /servicos/automacao-hvac.html
+Redirect 301 /automacao /servicos/automacao-hvac.html
+Redirect 301 /automacao-industrial /servicos/automacao-hvac.html
+Redirect 301 /automacao-de-ar-condicionado /servicos/automacao-hvac.html
+Redirect 301 /bms /servicos/automacao-hvac.html
+Redirect 301 /sistema-bms /servicos/automacao-hvac.html
+Redirect 301 /supervisorio-hvac /servicos/automacao-hvac.html
+Redirect 301 /controlador-ddc /servicos/automacao-hvac.html
+Redirect 301 /monitoramento-remoto /servicos/automacao-hvac.html
+Redirect 301 /bacnet /servicos/automacao-hvac.html
+Redirect 301 /modbus /servicos/automacao-hvac.html
+
+# --- Dutos e Ventilacao ---
+Redirect 301 /dutos /servicos/dutos-ventilacao.html
+Redirect 301 /dutos-de-ar /servicos/dutos-ventilacao.html
+Redirect 301 /dutos-galvanizados /servicos/dutos-ventilacao.html
+Redirect 301 /dutos-pre-isolados /servicos/dutos-ventilacao.html
+Redirect 301 /fabricacao-de-dutos /servicos/dutos-ventilacao.html
+Redirect 301 /instalacao-de-dutos /servicos/dutos-ventilacao.html
+Redirect 301 /ventilacao-industrial /servicos/dutos-ventilacao.html
+Redirect 301 /ventilacao /servicos/dutos-ventilacao.html
+Redirect 301 /exaustao-industrial /servicos/dutos-ventilacao.html
+Redirect 301 /exaustao /servicos/dutos-ventilacao.html
+Redirect 301 /distribuicao-de-ar /servicos/dutos-ventilacao.html
+Redirect 301 /dampers /servicos/dutos-ventilacao.html
+Redirect 301 /grelhas /servicos/dutos-ventilacao.html
+Redirect 301 /difusores /servicos/dutos-ventilacao.html
+
+# --- Central de Agua Gelada ---
+Redirect 301 /central-de-agua-gelada /servicos/central-agua-gelada.html
+Redirect 301 /agua-gelada /servicos/central-agua-gelada.html
+Redirect 301 /chiller /servicos/central-agua-gelada.html
+Redirect 301 /chiller-industrial /servicos/central-agua-gelada.html
+Redirect 301 /torre-de-resfriamento /servicos/central-agua-gelada.html
+Redirect 301 /cag /servicos/central-agua-gelada.html
+
+# --- UTA / Tratamento de Ar ---
+Redirect 301 /uta /servicos/uta-tratamento-ar.html
+Redirect 301 /unidade-de-tratamento-de-ar /servicos/uta-tratamento-ar.html
+Redirect 301 /tratamento-de-ar /servicos/uta-tratamento-ar.html
+Redirect 301 /climatizador /servicos/uta-tratamento-ar.html
+Redirect 301 /desumidificador /servicos/uta-tratamento-ar.html
+
+# --- Montagem Mecanica ---
+Redirect 301 /montagem-mecanica /servicos/montagem-mecanica.html
+Redirect 301 /montagem-industrial /servicos/montagem-mecanica.html
+Redirect 301 /montagem-de-equipamentos /servicos/montagem-mecanica.html
+Redirect 301 /balanceamento /servicos/montagem-mecanica.html
+Redirect 301 /balanceamento-hvac /servicos/montagem-mecanica.html
+Redirect 301 /balanceamento-de-ar /servicos/montagem-mecanica.html
+Redirect 301 /comissionamento /servicos/montagem-mecanica.html
+Redirect 301 /comissionamento-hvac /servicos/montagem-mecanica.html
+Redirect 301 /startup /servicos/montagem-mecanica.html
+Redirect 301 /tubulacao-frigorifica /servicos/montagem-mecanica.html
+Redirect 301 /tubulacao-industrial /servicos/montagem-mecanica.html
+Redirect 301 /cascata-de-pressao /servicos/montagem-mecanica.html
+
+# ============================================
+# PERFORMANCE - Compression & Caching
+# ============================================
+
+# --- GZIP Compression ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml application/xml
+</IfModule>
+
+# --- Browser Caching ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+
+# --- Security Headers ---
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

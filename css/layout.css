@@ -1,0 +1,86 @@
+/* ============================================
+   FLUXO ENGENHARIA - Layout System
+   Grid, containers, breakpoints (mobile-first)
+   ============================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+/* --- Section spacing --- */
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+.section--lg {
+  padding: var(--space-4xl) 0;
+}
+
+.section--bg {
+  background-color: var(--color-surface);
+}
+
+.section--bg-alt {
+  background-color: var(--color-bg-alt);
+}
+
+/* --- Grid system --- */
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.grid--2 {
+  grid-template-columns: 1fr;
+}
+
+.grid--3 {
+  grid-template-columns: 1fr;
+}
+
+.grid--4 {
+  grid-template-columns: 1fr;
+}
+
+.grid--2-1 {
+  grid-template-columns: 1fr;
+}
+
+/* --- Row / Flex --- */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.row--center {
+  align-items: center;
+  justify-content: center;
+}
+
+.row--between {
+  justify-content: space-between;
+}
+
+/* --- Responsive breakpoints --- */
+@media (min-width: 640px) {
+  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 768px) {
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .grid--2-1 { grid-template-columns: 2fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
