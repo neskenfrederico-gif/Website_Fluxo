@@ -351,4 +351,44 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach((element) => element.classList.add('visible'));
   }
 
+  // Animated counters
+  const counters = document.querySelectorAll('[data-count]');
+
+  if (counters.length && 'IntersectionObserver' in window) {
+    const formatNumber = (num) => {
+      return num >= 1000 ? num.toLocaleString('pt-BR') : String(num);
+    };
+
+    const animateCounter = (element) => {
+      const target = parseInt(element.dataset.count, 10);
+      const duration = 2000;
+      const startTime = performance.now();
+
+      const step = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+
+        element.textContent = formatNumber(current);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      };
+
+      requestAnimationFrame(step);
+    };
+
+    const counterObserver = new IntersectionObserver((entries, instance) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        instance.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+
+    counters.forEach((counter) => counterObserver.observe(counter));
+  }
+
 });
